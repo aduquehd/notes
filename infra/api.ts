@@ -1,5 +1,5 @@
-import { queue } from "./queue";
 import { table } from "./storage";
+import { queue } from "./queue";
 
 // Create the API
 export const api = new sst.aws.ApiGatewayV2("Api", {
@@ -19,4 +19,4 @@ api.route("PUT /notes/{id}", "packages/functions/src/update.main");
 api.route("DELETE /notes/{id}", "packages/functions/src/delete.main");
 
 // IP Address
-api.route("POST /ip", "packages/functions/src/initIpAddress.main");
+api.route("POST /ip", "packages/functions/src/publisher.main");

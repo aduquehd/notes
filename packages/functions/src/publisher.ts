@@ -17,8 +17,9 @@ export const main = Util.handler(async (event) => {
   await client.send(
     new SendMessageCommand({
       QueueUrl: Resource.MyQueue.url,
-      MessageBody: data.ipAddress,
+      MessageBody: JSON.stringify({"ipAddress": data.ipAddress}),
     })
   );
+
   return JSON.stringify({ status: true, ipAddress: data.ipAddress });
 });

@@ -6,6 +6,7 @@
     "@aws-sdk/client-sqs": "^3.713.0",
     "@aws-sdk/lib-dynamodb": "^3.713.0",
     "@notes/core": "*",
+    "axios": "^1.7.9",
     "sst": "*",
     "uuid": "^11.0.3"
   },

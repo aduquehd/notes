@@ -10,16 +10,7 @@ declare module "sst" {
       "type": "sst.aws.ApiGatewayV2"
       "url": string
     }
-    "MyApp": {
-      "name": string
-      "type": "sst.aws.Function"
-      "url": string
-    }
     "MyQueue": {
-      "type": "sst.aws.Queue"
-      "url": string
-    }
-    "MyQueueOld": {
       "type": "sst.aws.Queue"
       "url": string
     }

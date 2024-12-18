@@ -11,7 +11,7 @@ export const main = Util.handler(async (event) => {
     // 'Key' defines the partition key and sort key of
     // the item to be retrieved
     Key: {
-      userId: "A123", // The id of the author
+      userId: "B123", // The id of the author
       noteId: event?.pathParameters?.id, // The id of the note from the path
     },
   };

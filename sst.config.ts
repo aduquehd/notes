@@ -1,7 +1,5 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 
-import { queue } from "./infra/queue";
-
 export default $config({
   app(input) {
     return {
@@ -12,21 +10,19 @@ export default $config({
   },
 
   async run() {
-    await import("./infra/storage");
-    await import("./infra/api");
+    const queue = await import("./infra/queue");
+    const storage = await import("./infra/storage");
+    const api = await import("./infra/api");
 
-    const queue = new sst.aws.Queue("MyQueueOld");
-    queue.subscribe("processIpAddress.handler");
+    const sqsQueue = queue.queue;
 
-    const app = new sst.aws.Function("MyApp", {
-      handler: "processIpAddress.handler",
-      link: [queue],
-      url: true,
-    });
+    sqsQueue.subscribe("packages/functions/src/subscriber.handler");
 
     return {
-      app: app.url,
-      queue: queue.url,
+      // app: app.url,
+      // notes: table,
+      api: api.api.url,
+      queue: sqsQueue.url,
     };
   },
 });
